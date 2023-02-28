@@ -1,0 +1,25 @@
+{
+  "name": "optical-image-sizing",
+  "version": "0.1.0",
+  "description": "Normalize the size of a group of images, optically, based on their aspect ratios",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kni-labs/optical-image-sizing.git"
+  },
+  "keywords": [
+    "logos",
+    "sizing",
+    "aspect",
+    "ratio"
+  ],
+  "author": "Daniel Box",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kni-labs/optical-image-sizing/issues"
+  },
+  "homepage": "https://github.com/kni-labs/optical-image-sizing#readme"
+}

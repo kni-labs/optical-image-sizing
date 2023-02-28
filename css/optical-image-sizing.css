@@ -1,0 +1,19 @@
+.arScale > * {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  aspect-ratio: 1/1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.arScale img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  transform: scale(var(--scaleBy));
+}
