@@ -33,9 +33,9 @@ So, the wider an image, the less it scales, the closer it gets to square, the mo
   <figure><img src="img2.jpg"></figure>
 </div>
 ```
-2. Attach or add the javascript file.
+2. Attach or add the javascript file:
 ```
-<script src="../js/optical-image-sizing.js" defer></script>
+<script src="path-to/optical-image-sizing.js"></script>
 ```
 You can also add this and the css with npm.
 
