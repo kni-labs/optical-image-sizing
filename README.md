@@ -11,7 +11,7 @@ The absolute best way to insure a set of images always looks sized properly in r
 
 
 ### Why not just use object-fit?
-This repo does use `object-fit`, but there are limitations to the amount of normalization that can happen with `ojbect-fit`. Even with `max-height` and other tricks, images with different aspect-ratios will always appear as different visual sizes.
+This solution does use `object-fit`, but there are limitations to the amount of normalization that can happen with `ojbect-fit`. Even with `max-height` and other tricks, images with different aspect-ratios will always appear as different visual sizes.
 ![object-fit vs script](https://github.com/kni-labs/optical-image-sizing/blob/be9ba77c90c1939517292d7d1ce389e5c060d038/test/object-fit.jpg?raw=true) 
 
 
@@ -21,6 +21,10 @@ The solution for this is set their scale amount based on where the image's aspec
 ![Scaling along a curve](https://github.com/kni-labs/optical-image-sizing/blob/061b236bf0aec265357d5b7fcb5fd9b4e550451b/test/curve.jpg?raw=true) 
 
 So, the wider an image, the less it scales, the closer it gets to square, the more it scales. (For logos taller than `1:1` the script essentially reverses the process back down the curve.)
+
+### Usage
+
+Usages instructions here
 
 
 
