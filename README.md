@@ -1,10 +1,10 @@
 # optical-image-sizing
-Normalize the size of a set of images, optically, based on their aspect ratios
+Normalize the size of a set of images, optically, based on their aspect ratios. See it in action [on this Codepen](https://codepen.io/dbox/pen/oNPBozZ).
 
 ![grid of logos, before and after normalization](https://github.com/kni-labs/optical-image-sizing/blob/df1cfa533f4247142a9be9a11006ed46ab982290/test/preview.gif?raw=true) 
 
 ### What is this?
-This is a small script that loops through all the images of a specified container and resizes them be similarly sized. This is especially handy on logos, but has other applications as well.
+This is a small script that loops through all the images of a specified container and resizes them be similarly sized. This is especially handy on logos, but has other applications as well (product images, etc).
 
 ### Why not scale the images manually?
 The absolute best way to insure a set of images always looks sized properly in relation to each other is to manually size them within the same-sized containers. Many times this isn't feasible or a good use of time. This also becomes problematic when there are many images or they need to be added dynamically from a backend (from client).
@@ -16,9 +16,9 @@ This solution does use `object-fit`, but there are limitations to the amount of 
 
 
 ### The solution - Scaling along a curve
-The solution for this is set their scale amount based on where the image's aspect ratio lands on a curve:
+The solution for this is set the scale amount based on where the image's aspect ratio lands on a curve:
 
-![Scaling along a curve](https://github.com/kni-labs/optical-image-sizing/blob/1e0a5d2c8cb1ca25bcf9fc7fa925dd97272c4e87/test/curve.jpg?raw=true) 
+![Scaling along a curve](https://github.com/kni-labs/optical-image-sizing/blob/2a3ee98809fc2315dfc14538e5c429d48e963ae7/test/curve.jpg?raw=true) 
 
 So, the wider an image, the less it scales, the closer it gets to square, the more it scales. (For logos taller than `1:1` the script essentially reverses the process back down the curve.)
 
@@ -33,9 +33,9 @@ So, the wider an image, the less it scales, the closer it gets to square, the mo
   <figure><img src="img2.jpg"></figure>
 </div>
 ```
-2. Attach or add the javascript file.
+2. Attach or add the javascript file:
 ```
-<script src="../js/optical-image-sizing.js" defer></script>
+<script src="path-to/optical-image-sizing.js"></script>
 ```
 You can also add this and the css with npm.
 
