@@ -24,7 +24,51 @@ So, the wider an image, the less it scales, the closer it gets to square, the mo
 
 ### Usage
 
-Usages instructions here
+1. Add a container with the class `.arScale` that holds your images. Each image will also need to have a parent container (ie `div` or `figure`)
 
+```html
+<div class="arScale">
+  <figure><img src="img1.jpg"></figure>
+  <figure><img src="img2.jpg"></figure>
+  <figure><img src="img2.jpg"></figure>
+</div>
+```
+2. Attach or add the javascript file.
+```
+<script src="../js/optical-image-sizing.js" defer></script>
+```
+You can also add this and the css with npm.
+
+3. Add required css:
+```css
+/* modify container to suit your needs */
+.arScale {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 3%;
+  column-gap: 6%;
+}
+/* required */
+.arScale > * {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  aspect-ratio: 1/1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+/* required */
+.arScale img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  transform: scale(var(--scaleBy));
+}
+```
+The script will find the height and with of any image in that container then scale it accordingly.
 
 
