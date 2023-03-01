@@ -1,7 +1,7 @@
 # optical-image-sizing
 Normalize the size of a set of images, optically, based on their aspect ratios. See it in action [on this Codepen](https://codepen.io/dbox/pen/oNPBozZ).
 
-![grid of logos, before and after normalization](https://github.com/kni-labs/optical-image-sizing/blob/df1cfa533f4247142a9be9a11006ed46ab982290/test/preview.gif?raw=true) 
+![grid of logos, before and after normalization](https://github.com/kni-labs/optical-image-sizing/blob/38bbe018d5e8e5ec3193d8b917aa909048955f96/test/preview.gif?raw=true) 
 
 ### What is this?
 This is a small script that loops through all the images of a specified container and resizes them be similarly sized. This is especially handy on logos, but has other applications as well (product images, etc).
