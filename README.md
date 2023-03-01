@@ -18,7 +18,7 @@ This solution does use `object-fit`, but there are limitations to the amount of 
 ### The solution - Scaling along a curve
 The solution for this is set their scale amount based on where the image's aspect ratio lands on a curve:
 
-![Scaling along a curve](https://github.com/kni-labs/optical-image-sizing/blob/1e0a5d2c8cb1ca25bcf9fc7fa925dd97272c4e87/test/curve.jpg?raw=true) 
+![Scaling along a curve](https://github.com/kni-labs/optical-image-sizing/blob/2a3ee98809fc2315dfc14538e5c429d48e963ae7/test/curve.jpg?raw=true) 
 
 So, the wider an image, the less it scales, the closer it gets to square, the more it scales. (For logos taller than `1:1` the script essentially reverses the process back down the curve.)
 
