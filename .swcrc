@@ -1,0 +1,28 @@
+{
+  "exclude": "/types",
+  "jsc": {
+    "baseUrl": ".",
+    "loose": false,
+    "minify": {
+      "compress": {
+        "unused": true
+      },
+      "mangle": true
+    },
+    "parser": {
+      "decorators": false,
+      "dynamicImport": false,
+      "syntax": "typescript",
+      "tsx": false
+    },
+    "target": "es2022"
+  },
+  "minify": true,
+  "module": {
+    "type": "commonjs",
+    "lazy": false,
+    "noInterop": false,
+    "strict": true,
+    "strictMode": true
+  }
+}
