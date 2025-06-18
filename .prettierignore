@@ -1,0 +1,9 @@
+.git
+.next
+/coverage
+/.nx/cache
+/.nx/workspace-data
+pnpm-lock.yaml
+pnpm-workspace.yaml
+next-env.d.ts
+node_modules

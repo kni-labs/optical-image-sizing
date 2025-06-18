@@ -1,9 +1,35 @@
-import type {OpticalImageSizing} from "./types/optical-image-sizing";
+import type { OpticalImageSizing } from './types/optical-image-sizing';
 
 // TODO: create a DOM version and a react version
+// TODO: inline CSS but also allow option for easily setting it in builds like WP with a class that can be customized. maybe return the styles from the function?
 
-const opticalImageSizing: OpticalImageSizing = (images) => {
-  images.map((image) => {
+export const imageParentStyles = {
+  alignItems: 'center',
+  aspectRatio: '1/1',
+  border: '0',
+  display: 'flex',
+  margin: '0',
+  padding: '0',
+  textAlign: 'center',
+  verticalAlign: 'baseline',
+};
+
+export const imageStyles = {
+  height: '100%',
+  objectFit: 'contain',
+  opacity: '1',
+  transform: `scale(var(--opticalImageSize))`,
+  transition: 'opacity 0.2s ease',
+  width: '100%',
+};
+
+const opticalImageSizing: OpticalImageSizing = (
+  images,
+  options = {
+    inlineStyles: true,
+  },
+) => {
+  const sizedImages = images.map((image) => {
     // set up default values
     let scaleBy = 0;
     let scaleCurve = 0;
@@ -27,13 +53,20 @@ const opticalImageSizing: OpticalImageSizing = (images) => {
     scaleBy = Math.round((scaleCurve + Number.EPSILON) * 100) / 100;
 
     // set the CSS variables for the image
-    image.style.setProperty("--opticalImageSize", scaleBy.toString());
+    image.style.setProperty('--opticalImageSize', scaleBy.toString());
 
     // TODO: make sure opacity can be controlled with external styles / add option to hide images with param
-    image.style.setProperty("opacity", "1");
+
+    if (options?.inlineStyles) {
+      Object.entries(imageStyles).forEach(([key, value]) => {
+        image.style.setProperty(key, value);
+      });
+    }
+
+    return image;
   });
 
-  return images;
+  return sizedImages;
 };
 
 export default opticalImageSizing;

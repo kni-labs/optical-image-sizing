@@ -1,5 +1,9 @@
 export type OpticalImageSizing = (
-  images: HTMLImageElement[]
+  images: HTMLImageElement[],
+  options?: {
+    inlineStyles?: boolean;
+  },
 ) => HTMLImageElement[];
+
 export declare const opticalImageSizing: OpticalImageSizing;
 export default opticalImageSizing;
