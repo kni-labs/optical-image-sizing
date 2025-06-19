@@ -1,68 +1,20 @@
 import type { OpticalImageSizing } from './types/optical-image-sizing';
 
 // TODO: create a DOM version and a react version
-// TODO: inline CSS but also allow option for easily setting it in builds like WP with a class that can be customized. maybe return the styles from the function?
+// TODO: for the stylesheet option, document suggested default styles and examples instead of a CSS import, that way they're flexible, localized to the context and don't have to be repeated.
+// TODO: if not loaded, scale by 1
+// TODO: add event listeners / readiness checks + expose internal function
+// TODO: callback for when loading is complete?
 
-export const imageParentStyles = {
-  alignItems: 'center',
-  aspectRatio: '1/1',
-  border: '0',
-  display: 'flex',
-  margin: '0',
-  padding: '0',
-  textAlign: 'center',
-  verticalAlign: 'baseline',
-};
-
-export const imageStyles = {
-  height: '100%',
-  objectFit: 'contain',
-  opacity: '1',
-  transform: `scale(var(--opticalImageSize))`,
-  transition: 'opacity 0.2s ease',
-  width: '100%',
-};
-
-const opticalImageSizing: OpticalImageSizing = (
-  images,
-  options = {
-    inlineStyles: true,
-  },
-) => {
-  const sizedImages = images.map((image) => {
-    // set up default values
-    let scaleBy = 0;
-    let scaleCurve = 0;
-
-    // get the image's natural dimensions
+const opticalImageSizing: OpticalImageSizing = (images) => {
+  const sizedImages = Array.from(images).map((image) => {
     const imgWidth = image.naturalWidth;
     const imgHeight = image.naturalHeight;
-
-    // get a decimal aspect ratio by dividing height by width
     const aspectRatio = imgHeight / imgWidth;
-
-    // super edge case ultra tall/skinny
-    if (aspectRatio > 5) scaleBy = 1;
-    // edge case tall + skinny like NBA — scale logos along a custom ease-out-sine curve
-    else if (aspectRatio > 1.5)
-      scaleCurve = (1 - Math.cos((aspectRatio * Math.PI) / 1.75)) / 2;
-    // 99% of logos fall in here — scale logos along a custom ease-in-out-sine curve
-    else scaleCurve = 1 - -(Math.cos(Math.PI * aspectRatio) - 1) / 2 / 2.06;
-
-    // round it
-    scaleBy = Math.round((scaleCurve + Number.EPSILON) * 100) / 100;
-
-    // set the CSS variables for the image
-    image.style.setProperty('--opticalImageSize', scaleBy.toString());
-
-    // TODO: make sure opacity can be controlled with external styles / add option to hide images with param
-
-    if (options?.inlineStyles) {
-      Object.entries(imageStyles).forEach(([key, value]) => {
-        image.style.setProperty(key, value);
-      });
-    }
-
+    // TODO: make sure edge cases are compensated for like NBA
+    const scaleBy = 1 - -(Math.cos(Math.PI * aspectRatio) - 1) / 2 / 2;
+    const scaleRound = Math.round((scaleBy + Number.EPSILON) * 100) / 100;
+    image.style.setProperty('--optical-image-size', scaleRound.toString());
     return image;
   });
 

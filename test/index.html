@@ -5,7 +5,7 @@
     <title>Optical image normalization</title>
     <link rel="stylesheet" href="../css/optical-image-sizing.css" />
     <style>
-      .arScale {
+      .optical-image-sizing {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         grid-gap: 3%;
@@ -17,25 +17,27 @@
     </style>
   </head>
   <body>
-    <!-- Any images placed into arScale > figure > img will be automatically scaled. Images must be cropped tightly. -->
+    <!-- Any images placed into optical-image-sizing > figure > img will be automatically scaled. Images must be cropped tightly. -->
 
-    <div class="arScale">
+    <div class="optical-image-sizing">
       <figure>
         <img
           src="https://images.squarespace-cdn.com/content/v1/5ede2122e582b96630a4a73e/1609427144088-J6QCD34P67Y6GLUJ10HH/MTV-Logo-2021.jpg?format=2500w"
           alt=""
         />
       </figure>
-      <figuer
-        ><img
+      <figure>
+        <img
           src="https://1000logos.net/wp-content/uploads/2017/05/Rolex-logo.png"
           alt=""
-      /></figuer>
-      <figuer
-        ><img
+        />
+      </figure>
+      <figure>
+        <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk4f-mRJPxI2q_lmLlHQu-Sgw0aLD4gmvHzg&usqp=CAU"
           alt=""
-      /></figuer>
+        />
+      </figure>
       <figure>
         <img
           src="https://images.squarespace-cdn.com/content/v1/5ede2122e582b96630a4a73e/1609426275896-1FOTSNA4G3UL4V05UONK/koa-logo+2021.png?format=750w"
@@ -266,6 +268,14 @@
       </figure>
     </div>
     <!-- partial -->
-    <script src="../js/optical-image-sizing.js" defer></script>
+    <script type="module">
+      import opticalImageSizing from '../dist/src/index.js';
+
+      const images = document.querySelectorAll(
+        '.optical-image-sizing figure img',
+      );
+
+      window.addEventListener('load', () => opticalImageSizing(images));
+    </script>
   </body>
 </html>

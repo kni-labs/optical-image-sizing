@@ -1,19 +1,19 @@
-.arScale > * {
+.optical-image-sizing figure {
+  align-items: center;
+  aspect-ratio: 1/1;
+  border: 0;
+  display: flex;
   margin: 0;
   padding: 0;
-  border: 0;
-  vertical-align: baseline;
-  aspect-ratio: 1/1;
   text-align: center;
-  display: flex;
-  align-items: center;
+  vertical-align: baseline;
 }
 
-.arScale img {
-  width: 100%;
+.optical-image-sizing img {
   height: 100%;
   object-fit: contain;
   opacity: 0;
+  transform: scale(var(--optical-image-size));
   transition: opacity 0.2s ease;
-  transform: scale(var(--scaleBy));
+  width: 100%;
 }

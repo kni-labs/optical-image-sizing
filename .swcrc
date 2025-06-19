@@ -19,7 +19,7 @@
   },
   "minify": true,
   "module": {
-    "type": "commonjs",
+    "type": "es6",
     "lazy": false,
     "noInterop": false,
     "strict": true,
