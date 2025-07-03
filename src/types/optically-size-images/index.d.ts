@@ -1,11 +1,11 @@
 export type OpticallySizeImage = (image: HTMLImageElement) => HTMLImageElement;
 
-export type OpticalImageSizing = (
+export type OpticallySizeImages = (
   images: ReturnType<OpticallySizeImage>[],
   options?: {
     inlineStyles?: boolean;
   },
 ) => ReturnType<OpticallySizeImage>[];
 
-export declare const opticalImageSizing: OpticalImageSizing;
-export default opticalImageSizing;
+export declare const opticallySizeImages: OpticallySizeImages;
+export default opticallySizeImages;

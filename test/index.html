@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <title>Optical image normalization</title>
-    <link rel="stylesheet" href="../css/optical-image-sizing.css" />
+    <link rel="stylesheet" href="../css/index.css" />
     <style>
-      .optical-image-sizing {
+      .optically-size-images {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         grid-gap: 3%;
@@ -17,9 +17,9 @@
     </style>
   </head>
   <body>
-    <!-- Any images placed into optical-image-sizing > figure > img will be automatically scaled. Images must be cropped tightly. -->
+    <!-- Any images placed into optically-size-images > figure > img will be automatically scaled. Images must be cropped tightly. -->
 
-    <div class="optical-image-sizing">
+    <div class="optically-size-images">
       <figure>
         <img
           src="https://images.squarespace-cdn.com/content/v1/5ede2122e582b96630a4a73e/1609427144088-J6QCD34P67Y6GLUJ10HH/MTV-Logo-2021.jpg?format=2500w"
@@ -269,13 +269,13 @@
     </div>
     <!-- partial -->
     <script type="module">
-      import opticalImageSizing from '../dist/src/index.js';
+      import opticallySizeImages from '../dist/src/index.js';
 
       const images = document.querySelectorAll(
-        '.optical-image-sizing figure img',
+        '.optically-size-images figure img',
       );
 
-      window.addEventListener('load', () => opticalImageSizing(images));
+      window.addEventListener('load', () => opticallySizeImages(images));
     </script>
   </body>
 </html>

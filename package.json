@@ -1,5 +1,5 @@
 {
-  "name": "optical-image-sizing",
+  "name": "optically-size-images",
   "engines": {
     "node": ">=16 <23",
     "npm": ">=8 <11"
@@ -7,10 +7,10 @@
   "version": "1.0.0",
   "description": "Normalize the size of a group of images, optically, based on their aspect ratios",
   "main": "dist/src/index.js",
-  "types": "dist/types/optical-image-sizing/index.d.ts",
+  "types": "dist/types/optically-size-images/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kni-labs/optical-image-sizing.git"
+    "url": "git+https://github.com/kni-labs/optically-size-images.git"
   },
   "keywords": [
     "logos",
@@ -21,9 +21,9 @@
   "author": "Daniel Box",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kni-labs/optical-image-sizing/issues"
+    "url": "https://github.com/kni-labs/optically-size-images/issues"
   },
-  "homepage": "https://github.com/kni-labs/optical-image-sizing#readme",
+  "homepage": "https://github.com/kni-labs/optically-size-images#readme",
   "devDependencies": {
     "@swc/cli": "0.7.7",
     "@swc/core": "1.11.24",

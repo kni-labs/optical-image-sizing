@@ -1,7 +1,7 @@
 import type {
-  OpticalImageSizing,
   OpticallySizeImage,
-} from './types/optical-image-sizing';
+  OpticallySizeImages,
+} from './types/optically-size-images';
 
 // TODO: create a DOM version and a react version
 // TODO: for the stylesheet option, document suggested default styles and examples instead of a CSS import, that way they're flexible, localized to the context and don't have to be repeated.
@@ -20,7 +20,7 @@ const opticallySizeImage: OpticallySizeImage = (image) => {
   return image;
 };
 
-const opticalImageSizing: OpticalImageSizing = (images) => {
+const opticallySizeImages: OpticallySizeImages = (images) => {
   const sizedImages = Array.from(images).map((image) => {
     return opticallySizeImage(image);
   });
@@ -28,4 +28,4 @@ const opticalImageSizing: OpticalImageSizing = (images) => {
   return sizedImages;
 };
 
-export default opticalImageSizing;
+export default opticallySizeImages;

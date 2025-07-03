@@ -1,8 +1,8 @@
-# optical-image-sizing
+# optically-size-images
 
 Normalize the size of a set of images, optically, based on their aspect ratios. See it in action [on this Codepen](https://codepen.io/dbox/pen/oNPBozZ).
 
-![grid of logos, before and after normalization](https://github.com/kni-labs/optical-image-sizing/blob/38bbe018d5e8e5ec3193d8b917aa909048955f96/test/preview.gif?raw=true)
+![grid of logos, before and after normalization](https://github.com/kni-labs/optically-size-images/blob/38bbe018d5e8e5ec3193d8b917aa909048955f96/test/preview.gif?raw=true)
 
 ## What is this?
 
@@ -14,13 +14,13 @@ The absolute best way to insure a set of images always looks sized properly in r
 
 ## Why not just use object-fit?
 
-This solution does use `object-fit`, but there are limitations to the amount of normalization that can happen with `object-fit`. Even with `max-height` and other tricks, images with different aspect-ratios will always appear as different visual sizes. ![object-fit vs script](https://github.com/kni-labs/optical-image-sizing/blob/be9ba77c90c1939517292d7d1ce389e5c060d038/test/object-fit.jpg?raw=true)
+This solution does use `object-fit`, but there are limitations to the amount of normalization that can happen with `object-fit`. Even with `max-height` and other tricks, images with different aspect-ratios will always appear as different visual sizes. ![object-fit vs script](https://github.com/kni-labs/optically-size-images/blob/be9ba77c90c1939517292d7d1ce389e5c060d038/test/object-fit.jpg?raw=true)
 
 ## The solution - Scaling along a curve
 
 The solution for this is to set the scale amount based on where the image's aspect ratio lands on a curve:
 
-![Scaling along a curve](https://github.com/kni-labs/optical-image-sizing/blob/2a3ee98809fc2315dfc14538e5c429d48e963ae7/test/curve.jpg?raw=true)
+![Scaling along a curve](https://github.com/kni-labs/optically-size-images/blob/2a3ee98809fc2315dfc14538e5c429d48e963ae7/test/curve.jpg?raw=true)
 
 So, the wider an image, the less it scales, the closer it gets to square, the more it scales. (For logos taller than `1:1` the script essentially reverses the process back down the curve.)
 
@@ -39,7 +39,7 @@ So, the wider an image, the less it scales, the closer it gets to square, the mo
 1. Attach or add the javascript file:
 
 ```html
-<script src="path-to/optical-image-sizing.js"></script>
+<script src="path-to/optically-size-images.js"></script>
 ```
 
 You can also add this and the css with npm.
