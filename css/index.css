@@ -14,6 +14,5 @@
   object-fit: contain;
   opacity: 0;
   transform: scale(var(--optical-image-size));
-  transition: opacity 0.2s ease;
   width: 100%;
 }

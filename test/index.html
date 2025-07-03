@@ -72,10 +72,7 @@
         />
       </figure>
       <figure>
-        <img
-          src="https://seeklogo.com/images/N/nba-national-basketball-association-logo-DCDCA90B16-seeklogo.com.png"
-          alt=""
-        />
+        <img src="https://cdn.worldvectorlogo.com/logos/nba-6.svg" alt="" />
       </figure>
       <figure>
         <img
@@ -102,7 +99,7 @@
         />
       </figure>
       <figure><img src="https://www.dbox.us/misc/allure.jpg" alt="" /></figure>
-      <figure>
+      <!-- <figure>
         <img
           src="https://camo.githubusercontent.com/f3832651dd47f41eeb435d204b960a2b5976b796b4368bb96039147613bf5077/68747470733a2f2f63646e2e737667706f726e2e636f6d2f6c6f676f732f76756c74722e737667"
           alt=""
@@ -113,7 +110,7 @@
           src="https://camo.githubusercontent.com/e7716bd06af7f1adc308925a55d7b4dccba9d416873e392a691cc62b441ff05f/68747470733a2f2f63646e2e737667706f726e2e636f6d2f6c6f676f732f72616e636865722e737667"
           alt=""
         />
-      </figure>
+      </figure> -->
       <figure><img src="https://www.dbox.us/misc/tree.jpg" alt="" /></figure>
       <figure>
         <img
@@ -127,7 +124,7 @@
           alt=""
         />
       </figure>
-      <figure>
+      <!-- <figure>
         <img
           src="https://camo.githubusercontent.com/97bccd9c5e69a78618f6bba76db3e25f88e0d8b88ad8ad1d8b757dc557deaf0e/68747470733a2f2f63646e2e737667706f726e2e636f6d2f6c6f676f732f72696465722e737667"
           alt=""
@@ -138,7 +135,7 @@
           src="https://camo.githubusercontent.com/228be47e1e656d975198b4df990d0599452b6c7eb12b0b09310e934273bb3e60/68747470733a2f2f63646e2e737667706f726e2e636f6d2f6c6f676f732f686f6f7473756974652e737667"
           alt=""
         />
-      </figure>
+      </figure> -->
       <figure>
         <img
           src="https://s3.amazonaws.com/cdn.designcrowd.com/blog/100-Famous-Brand%20Logos-From-The-Most-Valuable-Companies-of-2020/american-express-logo.png"
@@ -184,7 +181,7 @@
       </figure>
       <figure>
         <img
-          src="https://raw.githubusercontent.com/gilbarbara/logos/main/logos/google-play.svg"
+          src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Google_Play_2022_logo.svg"
           alt=""
         />
       </figure>
@@ -269,13 +266,21 @@
     </div>
     <!-- partial -->
     <script type="module">
-      import opticallySizeImages from '../dist/src/index.js';
+      import opticallySizeImages from '../dist/src/lib/index.js';
 
       const images = document.querySelectorAll(
         '.optically-size-images figure img',
       );
 
-      window.addEventListener('load', () => opticallySizeImages(images));
+      window.addEventListener('load', () =>
+        opticallySizeImages(images, (image, opticalSize) => {
+          image.style.setProperty(
+            '--optical-image-size',
+            opticalSize.toString(),
+          );
+          image.style.setProperty('opacity', '1');
+        }),
+      );
     </script>
   </body>
 </html>

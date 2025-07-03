@@ -27,6 +27,7 @@
   "devDependencies": {
     "@swc/cli": "0.7.7",
     "@swc/core": "1.11.24",
+    "@types/react": "19.1.8",
     "@typescript-eslint/eslint-plugin": "5.57.1",
     "@typescript-eslint/parser": "5.57.1",
     "@typescript-eslint/typescript-estree": "5.57.1",
@@ -45,10 +46,13 @@
     "build": "npm run clean && npm run compile",
     "clean": "rm -rf ./dist && npm run test && npm run prettier",
     "compile": "swc ./src/* --out-dir ./dist && npm run copyTypes",
-    "copyTypes": "copyfiles -u 1 \"src/*.d.ts\" \"src/**/*.d.ts\" \"dist\"",
+    "copyTypes": "copyfiles -u 1 \"src/**/*.d.ts\" \"dist\"",
     "prepublishOnly": "npm i && npm run build",
     "prepare": "husky && git config core.hooksPath .husky/_",
     "prettier": "npx prettier --write .",
-    "test": "npx eslint \"./src/**/*.ts\" \"./src/*.ts\" --max-warnings=0 --fix"
+    "test": "npx eslint \"./src/**/*.ts\" --max-warnings=0 --fix"
+  },
+  "dependencies": {
+    "react": "19.1.0"
   }
 }
