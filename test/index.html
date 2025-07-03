@@ -268,9 +268,9 @@
     <script type="module">
       import opticallySizeImages from '../dist/src/lib/index.js';
 
-      const images = document.querySelectorAll(
+      const images = Array.from(document.querySelectorAll(
         '.optically-size-images figure img',
-      );
+      ));
 
       window.addEventListener('load', () =>
         opticallySizeImages(images, (image, opticalSize) => {

@@ -26,7 +26,7 @@ export const calculateOpticalImageSize: CalculateOpticalImageSize = (image) => {
 };
 
 const opticallySizeImages: OpticallySizeImages = (images, callback) => {
-  Array.from(images).map((image) => {
+  images.map((image) => {
     const setOpticalSize = (): void => {
       const opticalSize = calculateOpticalImageSize(image);
       if (callback) callback(image, opticalSize);
