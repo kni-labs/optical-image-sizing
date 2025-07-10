@@ -3,7 +3,7 @@ import type {
   OpticallySizeImages,
 } from '../types/lib/opticallySizeImages';
 
-// TODO: create a react component option that uses the hook and allows for a custom image component
+// TODO: set up react project and create a react component option that uses the hook and allows for a custom image component
 // TODO: document suggested default styles and examples instead of a CSS import, that way they're flexible, localized to the context and don't have to be repeated.
 // TODO: create callback functionality for react hook as well
 
