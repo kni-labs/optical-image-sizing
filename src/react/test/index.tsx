@@ -1,7 +1,7 @@
+import OpticallySizedImage from '../components/OpticallySizedImage';
 import React from 'react';
 import type { Root } from 'react-dom/client';
 import { createRoot } from 'react-dom/client';
-import useOpticalImageSize from '../hooks/useOpticalImageSize';
 
 const imageSources = [
   'https://images.squarespace-cdn.com/content/v1/5ede2122e582b96630a4a73e/1609427144088-J6QCD34P67Y6GLUJ10HH/MTV-Logo-2021.jpg?format=2500w',
@@ -47,32 +47,17 @@ const imageSources = [
   'https://raw.githubusercontent.com/shgysk8zer0/logos/master/sass.svg',
 ];
 
-const OpticalImage = ({ src }: { src: string }): React.JSX.Element => {
-  const { imgRef, ready, scale } = useOpticalImageSize(src);
-
-  return (
-    <figure>
-      <img
-        ref={imgRef}
-        src={src}
-        alt=""
-        style={
-          {
-            '--optical-image-size': scale,
-            opacity: ready ? 1 : 0,
-            transition: 'opacity 0.2s ease',
-          } as React.CSSProperties
-        }
-      />
-    </figure>
-  );
+// example of being able to use a custom image component
+const Image = (props: React.ComponentProps<'img'>): React.JSX.Element => {
+  const { alt, src, ...otherProps } = props;
+  return <img src={src} alt={alt} {...otherProps} />;
 };
 
 const App = (): React.JSX.Element => {
   return (
     <div className="optically-size-images">
       {imageSources.map((src) => (
-        <OpticalImage key={src} src={src} />
+        <OpticallySizedImage key={src} src={src} component={Image} />
       ))}
     </div>
   );
