@@ -7,3 +7,4 @@ pnpm-lock.yaml
 pnpm-workspace.yaml
 next-env.d.ts
 node_modules
+dist
