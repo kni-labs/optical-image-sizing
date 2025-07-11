@@ -1,4 +1,4 @@
-import OpticallySizedImage from '../components/OpticallySizedImage';
+import OpticallySizedImage from '../components/optically-sized-image';
 import React from 'react';
 import type { Root } from 'react-dom/client';
 import { createRoot } from 'react-dom/client';

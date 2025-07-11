@@ -1,6 +1,6 @@
 import { calculateOpticalImageSize, imageIsReady } from '../../../lib/index';
 import { useEffect, useRef, useState } from 'react';
-import type { UseOpticalImageSize } from 'src/types/react/useOpticalImageSize';
+import type { UseOpticalImageSize } from 'src/types/react/use-optical-image-size';
 
 const useOpticalImageSize: UseOpticalImageSize = (src) => {
   const imgRef = useRef<HTMLImageElement>(null);

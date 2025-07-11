@@ -1,5 +1,5 @@
 import React from 'react';
-import useOpticalImageSize from '../../hooks/useOpticalImageSize';
+import useOpticalImageSize from '../../hooks/use-optical-image-size';
 
 type OpticallySizedImageProps<ComponentType extends React.ElementType = 'img'> =
   Omit<React.ComponentPropsWithoutRef<ComponentType>, 'ref' | 'src'> & {

@@ -1,7 +1,7 @@
 import type {
   CalculateOpticalImageSize,
   OpticallySizeImages,
-} from '../types/lib/opticallySizeImages';
+} from '../types/lib/optically-size-images';
 
 // TODO: create a react component option that uses the hook and allows for a custom image component
 // TODO: export specific pieces of the library in package.json to allow for imports like optically-size-images/react
