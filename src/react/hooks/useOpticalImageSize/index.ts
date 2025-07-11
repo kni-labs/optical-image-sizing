@@ -13,12 +13,14 @@ const useOpticalImageSize: UseOpticalImageSize = (src) => {
 
     const updateScale = (): void => {
       setScale(calculateOpticalImageSize(image));
+      setReady(true);
     };
 
     if (imageIsReady(image)) {
       setReady(true);
       updateScale();
     } else {
+      setReady(false);
       image.addEventListener('load', updateScale);
 
       return () => {

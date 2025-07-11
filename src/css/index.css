@@ -1,3 +1,14 @@
+body {
+  padding: 3% 5%;
+}
+
+.optically-size-images {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 3%;
+  column-gap: 6%;
+}
+
 .optically-size-images figure {
   align-items: center;
   aspect-ratio: 1/1;
