@@ -30,15 +30,18 @@ const config = defineConfig({
     emptyOutDir: true,
     outDir: '../dist',
     rollupOptions: {
-      input: Object.fromEntries(
-        globSync('**/*.{html,ts,tsx}', {
-          cwd: 'src',
-          ignore: ['**/*.d.ts'],
-        }).map((file: string) => [
-          file.replace(/\.(html|ts|tsx)$/, ''),
-          path.resolve('src', file),
-        ]),
-      ),
+      input: {
+        'react/index': path.resolve('src/react/exports.ts'),
+        ...Object.fromEntries(
+          globSync('**/*.{html,ts,tsx}', {
+            cwd: 'src',
+            ignore: ['**/*.d.ts', 'react/exports.ts'],
+          }).map((file: string) => [
+            file.replace(/\.(html|ts|tsx)$/, ''),
+            path.resolve('src', file),
+          ]),
+        ),
+      },
       output: {
         entryFileNames: '[name].js',
         chunkFileNames: '[name].js',
