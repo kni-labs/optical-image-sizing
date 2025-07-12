@@ -49,7 +49,9 @@ const config = defineConfig(() => {
           chunkFileNames: '[name].js',
           assetFileNames: '[name].[ext]',
         },
-        treeshake: false,
+        treeshake: {
+          moduleSideEffects: false,
+        },
       },
     },
     plugins: [react(), copyTypesPlugin()],
