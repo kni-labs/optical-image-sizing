@@ -47,7 +47,6 @@ const OpticallySizedImage = React.forwardRef<
     style: {
       '--optical-image-size': scale,
       opacity: ready ? 1 : 0,
-      transition: 'opacity 0.2s ease',
       ...props.style,
     } as React.CSSProperties,
   };
