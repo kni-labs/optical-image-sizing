@@ -16,21 +16,19 @@ const OpticallySizedImage = <ComponentType extends React.ElementType = 'img'>({
   const ImageComponent = component ?? 'img';
 
   return (
-    <figure>
-      <ImageComponent
-        ref={imgRef}
-        src={src}
-        alt=""
-        style={
-          {
-            '--optical-image-size': scale,
-            opacity: ready ? 1 : 0,
-            transition: 'opacity 0.2s ease',
-          } as React.CSSProperties
-        }
-        {...otherProps}
-      />
-    </figure>
+    <ImageComponent
+      ref={imgRef}
+      src={src}
+      alt=""
+      style={
+        {
+          '--optical-image-size': scale,
+          opacity: ready ? 1 : 0,
+          transition: 'opacity 0.2s ease',
+        } as React.CSSProperties
+      }
+      {...otherProps}
+    />
   );
 };
 
