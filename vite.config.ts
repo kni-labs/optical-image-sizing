@@ -25,32 +25,36 @@ const copyTypesPlugin = (): Plugin => ({
   },
 });
 
-const config = defineConfig({
-  build: {
-    emptyOutDir: true,
-    outDir: '../dist',
-    rollupOptions: {
-      input: {
-        'react/index': path.resolve('src/react/exports.ts'),
-        ...Object.fromEntries(
-          globSync('**/*.{html,ts,tsx}', {
-            cwd: 'src',
-            ignore: ['**/*.d.ts', 'react/exports.ts'],
-          }).map((file: string) => [
-            file.replace(/\.(html|ts|tsx)$/, ''),
-            path.resolve('src', file),
-          ]),
-        ),
-      },
-      output: {
-        entryFileNames: '[name].js',
-        chunkFileNames: '[name].js',
-        assetFileNames: '[name].[ext]',
+const config = defineConfig(() => {
+  return {
+    build: {
+      emptyOutDir: true,
+      outDir: path.resolve(__dirname, 'dist'),
+      rollupOptions: {
+        external: ['react', 'react-dom', 'react/jsx-runtime'],
+        input: {
+          'react/index': path.resolve(__dirname, 'src/react/exports.ts'),
+          ...Object.fromEntries(
+            globSync('**/*.{ts,tsx}', {
+              cwd: 'src',
+              ignore: ['**/*.d.ts', 'react/exports.ts'],
+            }).map((file: string) => [
+              file.replace(/\.(ts|tsx)$/, ''),
+              path.resolve('src', file),
+            ]),
+          ),
+        },
+        output: {
+          entryFileNames: '[name].js',
+          chunkFileNames: '[name].js',
+          assetFileNames: '[name].[ext]',
+        },
+        treeshake: false,
       },
     },
-  },
-  plugins: [react(), copyTypesPlugin()],
-  root: 'src',
+    plugins: [react(), copyTypesPlugin()],
+    root: path.resolve(__dirname, 'src'),
+  };
 });
 
 export default config;
