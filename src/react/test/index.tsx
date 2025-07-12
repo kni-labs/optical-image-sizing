@@ -54,13 +54,18 @@ const Image = (props: { alt: string; src: string }): React.JSX.Element => {
 
 const App = (): React.JSX.Element => {
   return (
-    <div className="optically-size-images">
-      {imageSources.map((src) => (
-        <figure key={src}>
-          <OpticallySizedImage src={src} alt="logo" component={Image} />
-        </figure>
-      ))}
-    </div>
+    <>
+      <div>
+        <h1 style={{ fontFamily: 'sans-serif' }}>Optically sized images</h1>
+      </div>
+      <div className="optically-size-images">
+        {imageSources.map((src) => (
+          <figure key={src}>
+            <OpticallySizedImage src={src} alt="logo" component={Image} />
+          </figure>
+        ))}
+      </div>
+    </>
   );
 };
 
