@@ -48,7 +48,7 @@ const imageSources = [
 ];
 
 // example of being able to use a custom image component
-const Image = (props: React.ComponentProps<'img'>): React.JSX.Element => {
+const Image = (props: { alt: string; src: string }): React.JSX.Element => {
   const { alt, src, ...otherProps } = props;
   return <img src={src} alt={alt} {...otherProps} />;
 };
@@ -58,7 +58,7 @@ const App = (): React.JSX.Element => {
     <div className="optically-size-images">
       {imageSources.map((src) => (
         <figure key={src}>
-          <OpticallySizedImage src={src} component={Image} />
+          <OpticallySizedImage src={src} alt="logo" component={Image} />
         </figure>
       ))}
     </div>

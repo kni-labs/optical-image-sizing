@@ -1,37 +1,72 @@
 import { calculateOpticalImageSize, imageIsReady } from '../../../lib/index';
-import { useEffect, useRef, useState } from 'react';
-import type { UseOpticalImageSize } from 'src/types/react/use-optical-image-size';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
-const useOpticalImageSize: UseOpticalImageSize = (src) => {
-  const imgRef = useRef<HTMLImageElement>(null);
+// TODO: move types to library
+
+const useOpticalImageSize = (): {
+  imgRef: (element: HTMLImageElement | null) => void;
+  ready: boolean;
+  scale: number;
+} => {
+  const imgRef = useRef<HTMLImageElement | null>(null);
   const [ready, setReady] = useState(false);
   const [scale, setScale] = useState(1);
+  const isMountedRef = useRef(true);
+  const abortControllerRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
-    const image = imgRef.current;
-    if (!image) return;
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
 
-    const updateScale = (): void => {
-      setScale(calculateOpticalImageSize(image));
-      setReady(true);
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
     };
+  }, []);
 
-    if (imageIsReady(image)) {
+  const updateScale = useCallback(() => {
+    if (!isMountedRef.current || !imgRef.current) return;
+
+    try {
+      setScale(calculateOpticalImageSize(imgRef.current));
       setReady(true);
-      updateScale();
-    } else {
-      setReady(false);
-      image.addEventListener('load', updateScale);
-
-      return () => {
-        image.removeEventListener('load', updateScale);
-      };
+    } catch (error) {
+      if (isMountedRef.current) {
+        console.error('Error calculating optical image size:', error);
+      }
     }
+  }, []);
 
-    return;
-  }, [src]);
+  const refCallback = useCallback(
+    (element: HTMLImageElement | null) => {
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
 
-  return { imgRef, ready, scale };
+      imgRef.current = element;
+
+      if (!element || !isMountedRef.current) return;
+
+      abortControllerRef.current = new AbortController();
+      const signal = abortControllerRef.current.signal;
+
+      if (imageIsReady(element)) {
+        if (isMountedRef.current && !signal.aborted) {
+          setReady(true);
+          setScale(calculateOpticalImageSize(element));
+        }
+      } else {
+        if (isMountedRef.current && !signal.aborted) {
+          setReady(false);
+          element.addEventListener('load', updateScale, { signal });
+        }
+      }
+    },
+    [updateScale],
+  );
+
+  return { imgRef: refCallback, ready, scale };
 };
 
 export default useOpticalImageSize;

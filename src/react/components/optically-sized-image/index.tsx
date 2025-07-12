@@ -8,7 +8,7 @@ type OpticallySizedImageProps<ComponentType extends React.ElementType = 'img'> =
     component?: ComponentType;
   };
 
-const OpticallySizedImage = React.forwardRef<
+const OpticallySizedImageImpl = React.forwardRef<
   HTMLImageElement,
   OpticallySizedImageProps<React.ElementType>
 >((props, forwardedRef) => {
@@ -22,12 +22,19 @@ const OpticallySizedImage = React.forwardRef<
     component?: React.ElementType;
   };
 
-  const { imgRef, ready, scale } = useOpticalImageSize(src);
+  const { imgRef, ready, scale } = useOpticalImageSize();
 
   const combinedRef = React.useCallback(
     (element: HTMLImageElement | null) => {
-      if (imgRef.current !== element) {
-        imgRef.current = element;
+      if (typeof imgRef === 'function') {
+        imgRef(element);
+      } else if (
+        imgRef &&
+        typeof imgRef === 'object' &&
+        'current' in imgRef &&
+        (imgRef as React.RefObject<HTMLImageElement | null>).current !== element
+      ) {
+        (imgRef as React.RefObject<HTMLImageElement | null>).current = element;
       }
 
       if (typeof forwardedRef === 'function') {
@@ -54,6 +61,18 @@ const OpticallySizedImage = React.forwardRef<
   return React.createElement(component, elementProps);
 });
 
-OpticallySizedImage.displayName = 'OpticallySizedImage';
+interface OpticallySizedImageComponent {
+  <ComponentType extends React.ElementType = 'img'>(
+    props: OpticallySizedImageProps<ComponentType> & {
+      ref?: React.Ref<HTMLImageElement>;
+    },
+  ): React.ReactElement;
+  displayName?: string;
+}
+
+OpticallySizedImageImpl.displayName = 'OpticallySizedImage';
+
+const OpticallySizedImage =
+  OpticallySizedImageImpl as OpticallySizedImageComponent;
 
 export default OpticallySizedImage;
