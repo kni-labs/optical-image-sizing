@@ -2,7 +2,7 @@
 
 Normalize the size of a set of images, optically, based on their aspect ratios. See it in action [on this Codepen](https://codepen.io/dbox/pen/oNPBozZ).
 
-![grid of logos, before and after normalization](/src/public/test/preview.gif?raw=true)
+![grid of logos, before and after normalization](/public/preview.gif?raw=true)
 
 ## What is this?
 
@@ -14,13 +14,13 @@ The absolute best way to insure a set of images always looks sized properly in r
 
 ## Why not just use object-fit?
 
-This solution does use `object-fit`, but there are limitations to the amount of normalization that can happen with `object-fit`. Even with `max-height` and other tricks, images with different aspect-ratios will always appear as different visual sizes. ![object-fit vs script](/src/public/test/object-fit.jpg?raw=true)
+This solution does use `object-fit`, but there are limitations to the amount of normalization that can happen with `object-fit`. Even with `max-height` and other tricks, images with different aspect-ratios will always appear as different visual sizes. ![object-fit vs script](/public/object-fit.jpg?raw=true)
 
 ## The solution - Scaling along a curve
 
 The solution for this is to set the scale amount based on where the image's aspect ratio lands on a curve:
 
-![Scaling along a curve](/src/public/test/curve.jpg?raw=true)
+![Scaling along a curve](/public/curve.jpg?raw=true)
 
 So, the wider an image, the less it scales, the closer it gets to square, the more it scales. (For logos taller than `1:1` the script essentially reverses the process back down the curve.)
 
