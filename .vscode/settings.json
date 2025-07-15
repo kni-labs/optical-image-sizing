@@ -1,0 +1,12 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+  "eslint.lintTask.enable": true,
+  "eslint.validate": ["typescript"],
+  "files.defaultLanguage": "${activeEditorLanguage}",
+  "typescript.preferences.quoteStyle": "single",
+  "eslint.codeActionsOnSave.mode": "all",
+  "editor.formatOnSave": true
+}
