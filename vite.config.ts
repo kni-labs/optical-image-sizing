@@ -54,6 +54,7 @@ const config = defineConfig(() => {
           moduleSideEffects: false,
         },
       },
+      copyPublicDir: false,
     },
     plugins: [react(), copyTypesPlugin()],
     root: path.resolve(__dirname, 'src'),
