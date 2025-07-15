@@ -35,7 +35,7 @@ const config = defineConfig(() => {
         input: {
           'react/index': path.resolve(__dirname, 'src/react/exports.ts'),
           ...Object.fromEntries(
-            globSync('**/*.{ts,tsx}', {
+            globSync('**/*.{css,html,ts,tsx}', {
               cwd: 'src',
               ignore: ['**/*.d.ts', 'react/exports.ts'],
             }).map((file: string) => [
@@ -54,9 +54,9 @@ const config = defineConfig(() => {
           moduleSideEffects: false,
         },
       },
-      copyPublicDir: false,
     },
     plugins: [react(), copyTypesPlugin()],
+    publicDir: path.resolve(__dirname, 'src/public'),
     root: path.resolve(__dirname, 'src'),
   };
 });
