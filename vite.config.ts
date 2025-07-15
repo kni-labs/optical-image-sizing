@@ -49,6 +49,7 @@ const config = defineConfig(() => {
           chunkFileNames: '[name].js',
           assetFileNames: '[name].[ext]',
         },
+        preserveEntrySignatures: 'strict' as const,
         treeshake: {
           moduleSideEffects: false,
         },
