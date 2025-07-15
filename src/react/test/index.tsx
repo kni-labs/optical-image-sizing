@@ -60,7 +60,16 @@ const App = (): React.JSX.Element => {
       <div className="optically-size-images">
         {imageSources.map((src) => (
           <figure key={src}>
-            <OpticallySizedImage src={src} alt="logo" component={Image} />
+            <OpticallySizedImage
+              src={src}
+              alt="logo"
+              component={Image}
+              callback={(image, opticalSize): void => {
+                console.log(
+                  `${image.src} has an optical size of ${opticalSize}`,
+                );
+              }}
+            />
           </figure>
         ))}
       </div>

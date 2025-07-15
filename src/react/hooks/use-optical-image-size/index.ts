@@ -1,9 +1,12 @@
 import { calculateOpticalImageSize, imageIsReady } from '../../../lib/index';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import type { OpticallySizeImagesCallback } from '../../../types/lib/optically-size-images';
 
 // TODO: move types to library
 
-const useOpticalImageSize = (): {
+const useOpticalImageSize = (
+  callback?: OpticallySizeImagesCallback,
+): {
   imgRef: (element: HTMLImageElement | null) => void;
   ready: boolean;
   scale: number;
@@ -24,6 +27,12 @@ const useOpticalImageSize = (): {
       }
     };
   }, []);
+
+  useEffect(() => {
+    if (typeof callback === 'function' && imgRef.current && ready) {
+      callback(imgRef.current, scale);
+    }
+  }, [callback, ready, scale]);
 
   const updateScale = useCallback(() => {
     if (!isMountedRef.current || !imgRef.current) return;

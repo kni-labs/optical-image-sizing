@@ -1,3 +1,4 @@
+import type { OpticallySizeImagesCallback } from '../../../types/lib/optically-size-images';
 import React from 'react';
 import useOpticalImageSize from '../../hooks/use-optical-image-size';
 
@@ -6,6 +7,7 @@ import useOpticalImageSize from '../../hooks/use-optical-image-size';
 type OpticallySizedImageProps<ComponentType extends React.ElementType = 'img'> =
   Omit<React.ComponentPropsWithoutRef<ComponentType>, 'ref'> & {
     component?: ComponentType;
+    callback?: OpticallySizeImagesCallback;
   };
 
 const OpticallySizedImageImpl = React.forwardRef<
@@ -16,13 +18,14 @@ const OpticallySizedImageImpl = React.forwardRef<
     src = '',
     alt = '',
     component = 'img',
+    callback,
     ...otherProps
   } = props as OpticallySizedImageProps & {
     src: string;
     component?: React.ElementType;
   };
 
-  const { imgRef, ready, scale } = useOpticalImageSize();
+  const { imgRef, ready, scale } = useOpticalImageSize(callback);
 
   const combinedRef = React.useCallback(
     (element: HTMLImageElement | null) => {

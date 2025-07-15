@@ -3,8 +3,6 @@ import type {
   OpticallySizeImages,
 } from '../types/lib/optically-size-images';
 
-// TODO: create callback functionality for react hook/component as well
-
 // TODO: move type to library
 export const imageIsReady = (image: HTMLImageElement): boolean => {
   return (
