@@ -46,7 +46,6 @@ const imageSources = [
   'https://raw.githubusercontent.com/shgysk8zer0/logos/master/sass.svg',
 ];
 
-// example of being able to use a custom image component
 const Image = (props: { alt: string; src: string }): React.JSX.Element => {
   const { alt, src, ...otherProps } = props;
   return <img src={src} alt={alt} {...otherProps} />;
